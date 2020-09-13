@@ -15,7 +15,7 @@
 
 ### Association
 - has_many :items_users
-- has_many :item
+- has_many :items
 
 ## items テーブル
 
@@ -29,17 +29,17 @@
 | area         | integer   | null: false                    |
 | days         | integer   | null: false                    |
 | price        | integer   | null: false                    |
-| user_id      | reference | null: false, foreign_key: true |
+| user         | reference | null: false, foreign_key: true |
 ### Association
 - belongs_to:user
-- has_many :items_users
+- has_one :items_user
 - has_many :users, through: items_users
 
 ## items_users テーブル
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
 | user   | reference  | null: false, foreign_key: true |
-| items  | reference  | null: false, foreign_key: true |
+| item   | reference  | null: false, foreign_key: true |
 
 - belongs_to :item
 - belongs_to :user
@@ -52,6 +52,7 @@
 | Column        | Type      | Options                          |
 | ------------- | --------- | ---------------------------------|
 | postal_code   | string    | null: false                      |
+| prefectures   | integer   | null: false                      |
 | city          | string    | null: false                      |
 | house_number  | string    | null: false                      |
 | building_name | string    |                                  |
