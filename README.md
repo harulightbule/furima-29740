@@ -14,48 +14,49 @@
 | birthday       | date   | null: false |
 
 ### Association
-- has_many :items
-- has_many :address_users
-- has_many :users, through: address_users
+- has_many :items_users
+- has_many :items, through: items_users
 
 ## items テーブル
 
-| Column       | Type    | Options                       |
-| ------       | ------  | -----------                   |
-| name         | string  | null: false                   |
-| explanation  | text    | null: false                   |
-| category     | integer | null: false                   |
-| status       | integer | null: false                   |
-| delivery-fee | integer | null: false foreign_key: true |
-| area         | integer | null: false foreign_key: true |
-| days         | integer | null: false foreign_key: true |
-| price        | integer | null: false foreign_key: true |
+| Column       | Type    | Options     |
+| ------       | ------  | ----------- |
+| name         | string  | null: false |
+| explanation  | text    | null: false |
+| category     | integer | null: false |
+| status       | integer | null: false |
+| delivery-fee | integer | null: false |
+| area         | integer | null: false |
+| days         | integer | null: false |
+| price        | integer | null: false |
 
 ### Association
-- belongs_to :users
+- has_many :items_users
+- has_many :users, through: items_users
+
+## items_users テーブル
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| user   | reference  | null: false, foreign_key: true |
+| items  | reference  | null: false, foreign_key: true |
+
+- belongs_to :item
+- belongs_to :user
+- has_one:address
+
+
 
 ## address テーブル
 
 | Column        | Type       | Options                        |
 | ------        | ---------- | ------------------------------ |
-| postal_code   | references | null: false, foreign_key: true |
-| city          | references | null: false                    |
-| house_number  | references | null: false                    |
-| building_name | references | null: false                    |
-| phone_number  | references | null: false, foreign_key: true |
+| postal_code   | reference  | null: false, foreign_key: true |
+| city          | reference  | null: false                    |
+| house_number  | reference  | null: false                    |
+| building_name | reference  |                                |
+| phone_number  | reference  | null: false, foreign_key: true |
 
 ### Association
 
-- has_many :address_users
-- has_many :users, through: address_users
+- belongs_to :items_users
 
-## address_users テーブル
-| Column   | Type       | Options                        |
-| ------   | ---------- | ------------------------------ |
-| user     | reference  | null: false, foreign_key: true |
-| address  | reference  | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :address
-- belongs_to :user
