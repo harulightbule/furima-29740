@@ -2,16 +2,16 @@
 
 ## users テーブル
 
-| Column         | Type   | Options     |
-| --------       | ------ | ----------- |
-| nickname       | string | null: false |
-| email          | string | null: false |
-| password       | string | null: false |
-| last-name      | string | null: false |
-| first-name     | string | null: false |
-| reading-last   | string | null: false |
-| reading-first  | string | null: false |
-| birthday       | date   | null: false |
+| Column         | Type   | Options                       |
+| --------       | ------ | ------------------------------|
+| nickname       | string | null: false, foreign_key: true|
+| email          | string | null: false, foreign_key: true|
+| password       | string | null: false, foreign_key: true|
+| last-name      | string | null: false, foreign_key: true|
+| first-name     | string | null: false, foreign_key: true|
+| reading-last   | string | null: false, foreign_key: true|
+| reading-first  | string | null: false, foreign_key: true|
+| birthday       | date   | null: false, foreign_key: true|
 
 ### Association
 - has_many :items_users
@@ -19,16 +19,16 @@
 
 ## items テーブル
 
-| Column       | Type    | Options                        |
-| ------       | ------  | -------------------------------|
-| name         | string  | null: false, foreign_key: true |
-| explanation  | text    | null: false, foreign_key: true |
-| category     | integer | null: false, foreign_key: true |
-| status       | integer | null: false, foreign_key: true |
-| delivery-fee | integer | null: false, foreign_key: true |
-| area         | integer | null: false, foreign_key: true |
-| days         | integer | null: false, foreign_key: true |
-| price        | integer | null: false, foreign_key: true |
+| Column       | Type    | Options      |
+| ------       | ------  | -------------|
+| name         | string  | null: false, |
+| explanation  | text    | null: false, |
+| category     | integer | null: false, |
+| status       | integer | null: false, |
+| delivery-fee | integer | null: false, |
+| area         | integer | null: false, |
+| days         | integer | null: false, |
+| price        | integer | null: false, |
 
 ### Association
 - belongs_to:user
