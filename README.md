@@ -2,16 +2,16 @@
 
 ## users テーブル
 
-| Column         | Type   | Options                       |
-| --------       | ------ | ------------------------------|
-| nickname       | string | null: false, foreign_key: true|
-| email          | string | null: false, foreign_key: true|
-| password       | string | null: false, foreign_key: true|
-| last-name      | string | null: false, foreign_key: true|
-| first-name     | string | null: false, foreign_key: true|
-| reading-last   | string | null: false, foreign_key: true|
-| reading-first  | string | null: false, foreign_key: true|
-| birthday       | date   | null: false, foreign_key: true|
+| Column         | Type   | Options     |
+| --------       | ------ | ------------|
+| nickname       | string | null: false |
+| email          | string | null: false |
+| password       | string | null: false |
+| last-name      | string | null: false |
+| first-name     | string | null: false |
+| reading-last   | string | null: false |
+| reading-first  | string | null: false |
+| birthday       | date   | null: false |
 
 ### Association
 - has_many :items_users
@@ -19,17 +19,17 @@
 
 ## items テーブル
 
-| Column       | Type    | Options      |
-| ------       | ------  | -------------|
-| name         | string  | null: false, |
-| explanation  | text    | null: false, |
-| category     | integer | null: false, |
-| status       | integer | null: false, |
-| delivery-fee | integer | null: false, |
-| area         | integer | null: false, |
-| days         | integer | null: false, |
-| price        | integer | null: false, |
-
+| Column       | Type      | Options                        |
+| ------       | ------    | -------------------------------|
+| name         | string    | null: false                    |
+| explanation  | text      | null: false                    |
+| category     | integer   | null: false                    |
+| status       | integer   | null: false                    |
+| delivery-fee | integer   | null: false                    |
+| area         | integer   | null: false                    |
+| days         | integer   | null: false                    |
+| price        | integer   | null: false                    |
+| user_id      | reference | null: false, foreign_key: true |
 ### Association
 - belongs_to:user
 - has_many :items_users
@@ -49,13 +49,14 @@
 
 ## address テーブル
 
-| Column        | Type   | Options     |
-| ------        | ------ | ----------- |
-| postal_code   | string | null: false |
-| city          | string | null: false |
-| house_number  | string | null: false |
-| building_name | string |             |
-| phone_number  | string | null: false |
+| Column        | Type      | Options                          |
+| ------------- | --------- | ---------------------------------|
+| postal_code   | string    | null: false                      |
+| city          | string    | null: false                      |
+| house_number  | string    | null: false                      |
+| building_name | string    |                                  |
+| phone_number  | string    | null: false                      |
+| item_user_id  | reference | null: false, foreign_key: true   |
 
 ### Association
 
