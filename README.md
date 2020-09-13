@@ -1,24 +1,65 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column         | Type   | Options     |
+| --------       | ------ | ------------|
+| nickname       | string | null: false |
+| email          | string | null: false |
+| password       | string | null: false |
+| last-name      | string | null: false |
+| first-name     | string | null: false |
+| reading-last   | string | null: false |
+| reading-first  | string | null: false |
+| birthday       | date   | null: false |
 
-* Ruby version
+### Association
+- has_many :items_users
+- has_many :items
 
-* System dependencies
+## items テーブル
 
-* Configuration
+| Column       | Type      | Options                        |
+| ------       | ------    | -------------------------------|
+| name         | string    | null: false                    |
+| explanation  | text      | null: false                    |
+| category     | integer   | null: false                    |
+| status       | integer   | null: false                    |
+| delivery-fee | integer   | null: false                    |
+| area         | integer   | null: false                    |
+| days         | integer   | null: false                    |
+| price        | integer   | null: false                    |
+| user         | reference | null: false, foreign_key: true |
+### Association
+- belongs_to:user
+- has_one :items_user
+- has_many :users, through: items_users
 
-* Database creation
+## items_users テーブル
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| user   | reference  | null: false, foreign_key: true |
+| item   | reference  | null: false, foreign_key: true |
 
-* Database initialization
+- belongs_to :item
+- belongs_to :user
+- has_one:address
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## address テーブル
 
-* ...
+| Column        | Type      | Options                          |
+| ------------- | --------- | ---------------------------------|
+| postal_code   | string    | null: false                      |
+| prefectures   | integer   | null: false                      |
+| city          | string    | null: false                      |
+| house_number  | string    | null: false                      |
+| building_name | string    |                                  |
+| phone_number  | string    | null: false                      |
+| item_user_id  | reference | null: false, foreign_key: true   |
+
+### Association
+
+- belong_to :items_users
+
