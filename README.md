@@ -15,22 +15,23 @@
 
 ### Association
 - has_many :items_users
-- has_many :items, through: items_users
+- has_many :item
 
 ## items テーブル
 
-| Column       | Type    | Options     |
-| ------       | ------  | ----------- |
-| name         | string  | null: false |
-| explanation  | text    | null: false |
-| category     | integer | null: false |
-| status       | integer | null: false |
-| delivery-fee | integer | null: false |
-| area         | integer | null: false |
-| days         | integer | null: false |
-| price        | integer | null: false |
+| Column       | Type    | Options                        |
+| ------       | ------  | -------------------------------|
+| name         | string  | null: false, foreign_key: true |
+| explanation  | text    | null: false, foreign_key: true |
+| category     | integer | null: false, foreign_key: true |
+| status       | integer | null: false, foreign_key: true |
+| delivery-fee | integer | null: false, foreign_key: true |
+| area         | integer | null: false, foreign_key: true |
+| days         | integer | null: false, foreign_key: true |
+| price        | integer | null: false, foreign_key: true |
 
 ### Association
+- belongs_to:user
 - has_many :items_users
 - has_many :users, through: items_users
 
@@ -48,15 +49,15 @@
 
 ## address テーブル
 
-| Column        | Type       | Options                        |
-| ------        | ---------- | ------------------------------ |
-| postal_code   | reference  | null: false, foreign_key: true |
-| city          | reference  | null: false                    |
-| house_number  | reference  | null: false                    |
-| building_name | reference  |                                |
-| phone_number  | reference  | null: false, foreign_key: true |
+| Column        | Type   | Options     |
+| ------        | ------ | ----------- |
+| postal_code   | string | null: false |
+| city          | string | null: false |
+| house_number  | string | null: false |
+| building_name | string |             |
+| phone_number  | string | null: false |
 
 ### Association
 
-- belongs_to :items_users
+- belong_to :items_users
 
