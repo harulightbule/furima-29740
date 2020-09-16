@@ -27,7 +27,7 @@ RSpec.describe User, type: :model do
       expect(another_user.errors.full_messages).to include('Email has already been taken')
     end
     it 'emailは＠を含んでいないと保存出来ないこと' do
-      @user.email = '@gmail.com'
+      @user.email = 'gmail.com'
       @user.valid?
       expect(@user.errors.full_messages).to include('Email is invalid')
     end
@@ -46,6 +46,11 @@ RSpec.describe User, type: :model do
       @user.password_confirmation = nil
       @user.valid?
       expect(@user.errors.full_messages).to include("Password confirmation can't be blank", 'Password confirmation is invalid')
+    end
+    it 'passwordは半角英数字混合でないと保存できないこと' do
+      @user.password = 'aaa'
+      @user.valid?
+      expect(@user.errors.full_messages).to include('Password is invalid')
     end
     it 'last_nameが空だと保存できないこと' do
       @user.last_name = nil
