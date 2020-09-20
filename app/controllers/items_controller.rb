@@ -15,8 +15,8 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @items = Item.create(item_params)
-    if @items.save
+    @item = Item.new(item_params)
+    if @item.save
       render :index
     else
       render :new
