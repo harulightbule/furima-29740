@@ -2,8 +2,7 @@ class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index]
 
   def index
-    @items = Item.all # controller <= Item model => DB
-    @items = Item.order('created_at DESC')
+    
   end
 
   def move_to_index
@@ -16,7 +15,8 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    if @item.save
+    if @item.valid?
+     @item.save
       render :index
     else
       render :new

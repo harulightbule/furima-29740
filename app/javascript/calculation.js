@@ -11,13 +11,7 @@ window.addEventListener("load", function(){
 
     tax.innerHTML = fee
     profit.innerHTML = rate
-    
-
-
-    
-
   })
-  
 })
 
 
