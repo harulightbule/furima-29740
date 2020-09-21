@@ -17,7 +17,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.valid?
-     @item.save
+      @item.save
       render :index
     else
       render :new
