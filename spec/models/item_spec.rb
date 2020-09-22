@@ -44,10 +44,10 @@ RSpec.describe Item, type: :model do
       @items.valid?
       expect(@items.errors.full_messages).to include('Area must be other than 0')
     end
-    it 'days_idが空だと保存できないこと' do
-      @items.days_id = 1
+    it 'day_idが空だと保存できないこと' do
+      @items.day_id = 1
       @items.valid?
-      expect(@items.errors.full_messages).to include('Days must be other than 1')
+      expect(@items.errors.full_messages).to include('Day must be other than 1')
     end
     it 'priceが空だと保存できないこと' do
       @items.price = nil
