@@ -27,7 +27,7 @@
 | status       | integer   | null: false                    |
 | delivery-fee | integer   | null: false                    |
 | area         | integer   | null: false                    |
-| days         | integer   | null: false                    |
+| day          | integer   | null: false                    |
 | price        | integer   | null: false                    |
 | user         | reference | null: false, foreign_key: true |
 ### Association
