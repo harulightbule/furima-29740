@@ -5,7 +5,6 @@ class ItemsController < ApplicationController
     @items = Item.order('created_at DESC')
   end
 
-  
   def new
     @items = Item.new
   end
@@ -33,5 +32,4 @@ class ItemsController < ApplicationController
   def move_to_index
     redirect_to action: :index unless user_signed_in?
   end
-
 end
