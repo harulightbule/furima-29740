@@ -17,7 +17,7 @@ RSpec.describe ItemUserAddress, type: :model do
     it 'postal_codeが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
       @item_user_address.postal_code = '1234567'
       @item_user_address.valid?
-      expect(@item_user_address.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
+      expect(@item_user_address.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
     end
     it 'prefectureを選択していないと保存できないこと' do
       @item_user_address.prefecture = 0
@@ -46,12 +46,12 @@ RSpec.describe ItemUserAddress, type: :model do
     it 'phone_numberが半角ハイフンを含まず11桁以内でないと保存できないこと' do
       @item_user_address.phone_number = '090-1234-56789'
       @item_user_address.valid?
-      expect(@item_user_address.errors.full_messages).to include("Phone number is invalid")
+      expect(@item_user_address.errors.full_messages).to include('Phone number is invalid')
     end
-    it 'tokenが空だと保存できないこと'  do
+    it 'tokenが空だと保存できないこと' do
       @item_user_address.token = nil
       @item_user_address.valid?
       expect(@item_user_address.errors.full_messages).to include("Token can't be blank")
-    end      
+    end
   end
 end
