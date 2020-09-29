@@ -44,10 +44,15 @@ class OrdersController < ApplicationController
   end
 
   def correct_user
-    redirect_to root_path if user_signed_in? && current_user.id == @item.user_id
+    if user_signed_in? && current_user.id == @item.user_id
+      redirect_to root_path 
   end
+end
 
   def ban
-    redirect_to root_path if @item.item_user.present?
-  end
+    if @item.item_user.present?
+       redirect_to root_path 
+    end
+ end
+
 end
