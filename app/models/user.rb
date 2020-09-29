@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :items
+  has_many :items_users
   with_options presence: true do
     validates :nickname
     validates :password, format: { with: /[a-z\d]{6,}/i }, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i }
