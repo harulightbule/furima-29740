@@ -7,7 +7,7 @@ class ItemUserAddress
     validates :prefecture,  numericality: { other_than: 0, message: "can't be blank" }
     validates :city
     validates :house_number
-    validates :phone_number, format: {with: /\A0\d{10,11}/}
+    validates :phone_number, format: { with: /\A0\d{10,11}/}
     validates :token
   end
 
