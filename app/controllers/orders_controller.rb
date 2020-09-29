@@ -5,7 +5,6 @@ class OrdersController < ApplicationController
   before_action :ban, only: :index
 
   def index
-    @item = Item.find(params[:item_id])
     @item_user_address = ItemUserAddress.new
   end
 
