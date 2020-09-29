@@ -16,7 +16,7 @@ RSpec.describe ItemUserAddress, type: :model do
     end
   end
 
-   context '商品購入がが上手くいかないとき' do
+   context '商品購入が上手くいかないとき' do
     it 'postal_codeが空だと保存できないこと' do
       @item_user_address.postal_code = nil
       @item_user_address.valid?
