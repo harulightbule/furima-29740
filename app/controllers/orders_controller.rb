@@ -1,9 +1,12 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_item, only: :create
+  before_action :set_item, only: [:index, :create]
+  before_action :correct_user, only: :index
+  before_action :ban, only: :index
 
   def index
     @item = Item.find(params[:item_id])
+    @item_user_address = ItemUserAddress.new
   end
 
   def new
@@ -39,4 +42,17 @@ class OrdersController < ApplicationController
   def set_item
     @item = Item.find(params[:item_id])
   end
+
+  def correct_user
+    if user_signed_in? && current_user.id == @item.user_id 
+      redirect_to root_path
+    end
+  end
+
+  def ban
+    if @item.item_user.present?
+      redirect_to root_path
+    end
+  end      
+
 end
