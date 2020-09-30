@@ -1,8 +1,9 @@
 class Item < ApplicationRecord
   belongs_to :user
-  has_one :item_user
-  has_many :users, through: :items_users
-  has_one_attached :image
+  has_many :item_users, dependent: :destroy
+  has_many :users, through: :item_users
+  has_one :item_user, dependent: :destroy
+  has_one_attached :image, dependent: :destroy
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
   belongs_to_active_hash :status
